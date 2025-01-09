@@ -1,14 +1,29 @@
 #include <stdio.h>
+#include <string.h>
 
-void swap(int *a,int *b){
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
+struct sinhVien{
+	char name[100];
+	int age;
+	char phoneNumber[100];
+};
+
+typedef struct sinhVien sinhVien;
 
 int main(){
-	int a=1,b=2;
-	printf("Truoc khi dao X = %d , Y = %d\n\n",a,b);
-	swap(&a,&b);
-	printf("Sau khi dao X = %d , Y = %d",a,b);
+	sinhVien x;
+	printf("Nhap vao ten: ");
+	fgets(x.name,100,stdin);
+	x.name[strcspn(x.name,"\n")] = '\0';
+	
+	printf("Nhap tuoi: ");
+	scanf("%d",&x.age);
+	
+	getchar();
+	printf("Nhap sdt: ");
+	fgets(x.phoneNumber,100,stdin);
+	x.name[strcspn(x.name,"\n")] = '\0';
+	
+	printf("Ten: %s\n",x.name);
+	printf("Tuoi: %d\n",x.age);
+	printf("Sdt: %s",x.phoneNumber);
 }
